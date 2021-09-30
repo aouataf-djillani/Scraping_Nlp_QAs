@@ -1,0 +1,143 @@
+,Questions,Answers
+0,How will you build the automatic/smart reply feature on an app like gmail or linkedIn?,"
+Generating replies on the fly: Smart Reply can be built using sequence to sequence modeling. An incoming mail acts as the input to the model and the reply will be ..."
+1,What order of Markov assumption does n-grams model make ?,"An n-grams model makes order n-1 Markov assumption. This assumption implies: given the previous n-1 words, probability of  word is independent of words prior to  words.
+Suppose we have k words ..."
+2,What would you care more about – precision or recall for spam filtering problem?,"
+False positive means it was not a spam and we called it spam, false negative means it was a spam and we didn’t label it spam
+Precision = (TP / TP ..."
+3,How to measure the performance of the language model ?,"
+While building language model, we try to estimate the probability of the sentence or a document. 
+Given sequences(sentences or documents) like
+      
+
+Language model(bigram language model) will be ..."
+4,Which is better to use while extracting features character n-grams or word n-grams? Why?,"Both have their uses. Character n-grams are great where character level information is important : Example:  spelling correction,  language identification, writer identification (i.e. fingerprinting), anomaly detection. While word n-grams are ..."
+5,You are building a natural language search box for a website. How do you accommodate spelling errors?,"If you have a dictionary of words, edit distance is the simplest way of incorporating this. However, sometimes corrections based on context make sense. For instance, suppose I type “bed ..."
+6,"[latexpage] Given a bigram language model, in what scenarios do we encounter zero probabilities? How Should we handle these situations ?","
+Recall the Bi-gram model can be expressed as :
+
+      
+
+
+
+Scenario 1 – Out of vocabulary(OOV) words – such words may not be present during training and hence ..."
+7,You want to find food related topics in twitter – how do you go about it ?,"One can use any of the topic models above to get topics. However, to direct the topics to contain food related information, specialized topic modeling algorithms are available. 
+However, one ..."
+8,"Given the following two sentences, how do you determine if Teddy is a person or not?  “Teddy bears are on sale!” and “Teddy Roosevelt was a great President!”","
+This is an example of Named Entity Recognition(NER) problem. One can build a sequence model such as an LSTM to perform this task. However, as shown in both the sentences above, ..."
+9,What is PMI ?,"PMI : Pointwise Mutual Information, is a measure of correlation between two events x and y.  
+
+      
+      
+As you can see from above ..."
+10,[latexpage] How many parameters are there for an hMM model?,"Let us calculate the number of parameters for bi-gram hMM given as
+      
+Let  be the total number of states  and  be the vocabulary size ..."
+11,How do you deal with out of vocabulary words during run time when you build a language model ?,"Out of vocabulary words are words that are not in the training set, but appear in the test set, real data.  The main problem is that the model assigns a ..."
+12,"Say you’ve generated a language model using Bag of Words (BoW) with 1-hot encoding , and your training set has lot of sentences with the word “good” but none with the word “great”. Suppose I see sentence “Have a great day” p(great)=0.0 using this language model. How can you solve this problem leveraging the fact that good and great are similar words?","
+BoW with 1-hot encoding doesn’t capture the meaning of sentences, it only captures co-occurrence statistics. We need to build the language model using features which are representative of the meaning ..."
+13,Where would you not want to remove  stop words ?,Stop words can be in most application removed  when you are doing bag of words features. Some exceptions can involve sentiment analysis where ‘not’ cannot be removed because it is ...
+14,What will happen if you do not convert all characters to a single case (either lower or upper) during the pre-processing step of an NLP algorithm?,"When all words are not converted  to a single case, the vocabulary size will increase drastically as words like Up/up or Fast/fast or This/this will be treated differently which isn’t ..."
+15,Explain latent dirichlet allocation – where is it typically used ?,Latent Dirichlet Allocation is a probabilistic model that models a document as a multinomial mixture of topics and the topics as a multinomial mixture of words. Each of these multinomials ...
+16,Why are bigrams or any n-grams important in NLP(task like sentiment classification or spam detection)  or important enough to find them explicitly?,"
+There are mainly 2 reasons
+
+Some pair of words always occur together more often than they occur individually. Hence it is important to treat such co-occurring words as a single entity ..."
+17,What is a language model ? How do you create one ? Why do you need one ?,"A language model is a probability distribution over sequences of words P(w_1,… ,w_m). It enables us to measure the relative likelihood of different phrases. Measuring the likelihood of a sequence ..."
+18,"Suppose you are modeling text with a HMM, What is the complexity of finding most the probable sequence of tags or states from a sequence of text using brute force algorithm?","
+Assume there are total  states and let  be the length of the largest sequence.
+Think how we generate text using an hMM. We first have a state sequence and ..."
+19,What is the significance of n-grams in a language model ?,"n-grams is a term used for a sequence of n consecutive words/tokens/grams.
+In general, n-grams can either preserve the ordering or indicate what level of dependency is required in order to ..."
+20,What are popular ways of dimensionality reduction in NLP tasks ? Do you think this is even important ?,"Common representation is bag of words that is very high dimensional given high vocab size. Commonly used ways for dimensionality reduction in NLP : 
+
+TF-IDF : Term frequency, inverse document ..."
+21,How will you build an auto suggestion feature for a messaging app or google search?,"
+Auto Suggestion feature involves recommending the next word in a sentence or a phrase. For this, we need to build a language model on large enough corpus of “relevant” data. ..."
+22,What is the difference between translation and transliteration,"Transliteration is the process of converting a word written in one language into another language, phoneme by phoneme. Enabling transliteration for your search engine allows your site visitors to type ..."
+23,What is negative sampling when training the skip-gram model ?,Recap: Skip-Gram model is a popular algorithm to train word embeddings such as word2vec. It tries to represent each word in a large text as a lower dimensional vector in ...
+24,How is long term dependency maintained while building a language model?,"
+
+
+Language models can be built using the following popular methods –
+
+Using n-gram language model
+
+n-gram language models make assumption for the value of n. Larger the value of n, longer the ..."
+25,What can you say about the most frequent and most rare words ? Why are they important or not important ?,"
+
+
+Most frequent words are usually stop words like  
+Rare words could be because of spelling mistakes or due to the word being sparsely used in the data set.
+Usually ..."
+26,What are knowledge graphs? When would you need a knowledge graph over say a database to store information?,A knowledge graph organizes real world knowledge as entities and relationships between entities. Creating a knowledge graph often involves scraping / ingesting unstructured data and creating structure out of it ...
+27,You are given some documents and asked to find prevalent topics in the documents – how do you go about it ?,"This is typically called topic modeling. Topic modeling is a type of statistical modeling for discovering the abstract “topics” that occur in a collection of documents. For instance, two statements ..."
+28,What are the different independence assumptions in hMM & Naive Bayes ?,"Both the hMM and Naive Bayes have conditional independence assumption.
+hMM can be expressed by the equation below :
+      
+      
+Second equation implies a conditional ..."
+29,What is the difference between word2Vec and Glove ?,Both word2vec and glove enable us to represent a word in the form of a vector (often called embedding). They are the two most popular algorithms for word embeddings that bring ...
+30,Why is smoothing applied in language model ?,"
+Because there might be some n-grams in the test set but may not be present in the training set. For ex., If the training corpus is 
+      
+ and ..."
+31,What are some knowledge graphs you know. What is different between these ?,"
+DBPedia : Entities and relationships are automatically extracted from wikipedia. 
+Wordnet: Lexical database of english language. Groups english words as synsets and provides various relationships between words in a synset. ..."
+32,How do you design a system that reads a natural language question and retrieves the closest FAQ answer?,"There are multiple approaches for FAQ based question answering
+
+Keyword based search (Information retrieval approach): Tag each question with keywords. Extract keywords from query and retrieve all relevant questions answers. Easy ..."
+33,What are the different ways of representing documents ?,"
+Bag of words: Commonly called BOW involves creating a vocabulary of words and representing the document as a count vector, dimension equivalent to the vocabulary size – each dimension representing ..."
+34,What are the advantages and disadvantages of using Rule based approaches in NLP?,"
+
+
+Cold start: Many a times when we have the cold start problem (No data to begin with) in Machine Learning, rule based approaches make sense. 
+
+For example, you want to recommend ..."
+35,How do you find the most probable sequence of POS tags from a sequence of text?,"
+This problem can be solved with a HMM. 
+Using a HMM involves finding the transition probabilities (what is the probability of going from one POS tag to another and emission/output ..."
+36,Suppose you build word vectors (embeddings) with each word vector having dimensions as the vocabulary size(V) and feature values as pPMI between corresponding words: What are the problems with this approach and how can you resolve them ?,"Problems
+
+As the vocabulary size (V) is large, these vectors will be large in size.
+They will be sparse as a word may not have co-occurred with all possible words.
+
+Resolution
+
+Dimensionality Reduction using ..."
+37,What are common tools for speech recognition ? What are the advantages and disadvantages of each?,"There are several ready tools for speech recognition, that one can use to train custom models given the appropriate dataset. 
+CMU Sphinx : Used more in an academic setting, one ..."
+38,You have come up with a Spam classifier. How do you measure accuracy ?,"Spam filtering is a classification problem. In a classification problem, the following are the common metrics used to measure efficacy : 
+True positives : Those data points where the outcome ..."
+39,What is the state of the art technique for Machine Translation ?,"
+Rule based machine translation (Older techniques) : Uses dictionary between words of the two languages along with syntactic, semantic morphological analysis of the source sentence to define  context. Linguistic Rules ..."
+40,How do you deal with dataset imbalance in a problem like spam filtering ?,Class imbalance is a very common problem when applying ML algorithms. Spam filtering is one such application where class imbalance is apparent. There are many more non-spam emails in a ...
+41,What is the difference between paraphrasing and textual entailment ?,"Textual entailment is the process of determining if a source T implies the hypothesis text H. Example :It is a unidirectional relationship : text: If you help the needy, God ..."
+42,What is the difference between stemming and lemmatisation?,"
+Stemming is about replacing each word with its origin stem word in order to remove the suffixes like “es”, “ies”, “s”. For ex., “cats” => “cat”, “computers” => “computer” etc. ..."
+43,"You are trying to cluster documents using a Bag of Words method. Typically words like if, of, is and so on are not great features. How do you make sure you are leveraging the more informative words better during the feature Engineering?","  Words like if, of, … are called stop words. Typical pre-processing in standard NLP pipeline involves identifying and removing stop-words (except in some cases where context/ word adjacency information ..."
+44,What is shallow parsing,Typically we have a generative grammar that tells us how a sentence is generated from a set of rules.  Parsing is the process of finding a parse tree that is ...
+45,What are the advantages and disadvantages of using naive bayes for spam detection?,"Disadvantages: 
+Naive bayes is based on the conditional independence of features assumption – an assumption that is not valid in many real world scenarios. Hence it sometimes oversimplifies the problem ..."
+46,[latexpage] How do you train a hMM model in practice ?,"The joint probability distribution for the HMM model is given by the following equation where  are the observed data points and  the corresponding latent states:
+      ..."
+47,[latexpage] How do you generate text using a Hidden Markov Model (HMM) ?,"The HMM is a latent variable model where the observed sequence of variables  are assumed to be generated from a set of temporally connected latent  variables .
+The joint distribution ..."
+48,What is speaker segmentation in speech recognition ? How do you use it ?,Speaker diarization or speaker segmentation is the process of automatically assigning a speaker identity to each segment of the audio file. Segmenting by speaker is very useful in several applications ...
+49,"Can you find the antonyms of a word given a large enough corpus? For ex. Black => white or rich => poor etc. If yes then how, otherwise justify your answer.","
+Pre existing Databases: There are several curated antonym databases such as wordpress and so on from which you can directly check if you can get antonyms of a given word.
+Hearst ..."
+50,How can you increase the recall of a search query (on search engine or e-commerce site) result without changing the algorithm ?,"
+
+
+Since we are not allowed to change the algorithm, we can only play with modifying or augmenting the search query. (Note, we either change the algorithm/model or the data, here ..."
+51,What are some common tools available for NER ? Named Entity Recognition ?,"Notable NER platforms include:
+
+GATE supports NER across many languages and domains out of the box, usable via a graphical interface and a Java API.
+OpenNLP includes rule-based and statistical named-entity recognition.
+SpaCy ..."
+52,"If you don’t have a stop-word dictionary or are working on a new language, what approach would you take to remove stop words?","TF-IDF (term frequency Inverse document frequency) is a popular approach that can be leveraged to eliminate stop words. This technique is language independent. 
+The intuition here is that commonly occurring ..."
